@@ -1,6 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, View } from 'react-native';
+
+import Icon from '../components/Icon';
+
 function HomeScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -23,27 +26,35 @@ const BottomTabNavigator = () => {
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
-            // tabBarIcon: ({ focused, color, size }) => {
-            //   let iconName;
+            tabBarIcon: ({ focused, color, size }) => {
+              let iosName;
+              let aosName;
 
-            //   if (route.name === 'Home') {
-            //     iconName = focused
-            //       ? 'ion-ios-home'
-            //       : 'ion-ios-home-outline';
-            //   } else if (route.name === 'Notice') {
-            //     iconName = focused ? 'ios-list-box' : 'ios-list';
-            //   } else if (route.name === 'Cash') {
-            //     iconName = focused ? 'ios-list-box' : 'ios-list';
-            //   } else if (route.name === 'Travel') {
-            //     iconName = focused ? 'ios-list-box' : 'ios-list';
-            //   } else if (route.name === 'Calender') {
-            //     iconName = focused ? 'ios-list-box' : 'ios-list';
-            //   }
+              if (route.name === 'Home') {
+                iosName = focused ? 'ios-checkmark' : 'ios-checkmark';
+                aosName = focused ? 'md-checkmark' : 'md-checkmark';
+              } else if (route.name === 'Notice') {
+                iosName = focused ? 'ios-checkmark' : 'ios-checkmark';
+                aosName = focused ? 'md-checkmark' : 'md-checkmark';
+              } else if (route.name === 'Cash') {
+                iosName = focused ? 'ios-checkmark' : 'ios-checkmark';
+                aosName = focused ? 'md-checkmark' : 'md-checkmark';
+              } else if (route.name === 'Travel') {
+                iosName = focused ? 'ios-checkmark' : 'ios-checkmark';
+                aosName = focused ? 'md-checkmark' : 'md-checkmark';
+              } else if (route.name === 'Calender') {
+                iosName = focused ? 'ios-checkmark' : 'ios-checkmark';
+                aosName = focused ? 'md-checkmark' : 'md-checkmark';
+              }
                 
 
-            //   // You can return any component that you like here!
-            //   return <Ionicons name={iconName} size={size} color={color} />;
-            // },
+              // You can return any component that you like here!
+              return <Icon 
+                        iosName={iosName}
+                        aosName={aosName}
+                        size={size}
+                        color={color} />;
+            },
             })}
             tabBarOptions={{
             activeTintColor: 'tomato',
