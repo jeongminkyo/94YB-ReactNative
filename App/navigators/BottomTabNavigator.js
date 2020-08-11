@@ -27,24 +27,24 @@ const BottomTabNavigator = () => {
         <Tab.Navigator
             screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
-              let iosName;
-              let aosName;
+              let iosName = 'ios-checkmark';
+              let aosName = 'md-checkmark';
 
               if (route.name === 'Home') {
-                iosName = focused ? 'ios-checkmark' : 'ios-checkmark';
-                aosName = focused ? 'md-checkmark' : 'md-checkmark';
+                iosName = focused ? 'ios-home' : 'ios-home-outline';
+                aosName = focused ? 'md-home' : 'md-home-outline';
               } else if (route.name === 'Notice') {
-                iosName = focused ? 'ios-checkmark' : 'ios-checkmark';
-                aosName = focused ? 'md-checkmark' : 'md-checkmark';
+                iosName = focused ? 'ios-alert' : 'ios-alert-outline';
+                aosName = focused ? 'md-alert' : 'md-alert-outline';
               } else if (route.name === 'Cash') {
-                iosName = focused ? 'ios-checkmark' : 'ios-checkmark';
-                aosName = focused ? 'md-checkmark' : 'md-checkmark';
+                iosName = focused ? 'ios-cash' : 'ios-cash-outline';
+                aosName = focused ? 'md-cash' : 'md-cash-outline';
               } else if (route.name === 'Travel') {
-                iosName = focused ? 'ios-checkmark' : 'ios-checkmark';
-                aosName = focused ? 'md-checkmark' : 'md-checkmark';
-              } else if (route.name === 'Calender') {
-                iosName = focused ? 'ios-checkmark' : 'ios-checkmark';
-                aosName = focused ? 'md-checkmark' : 'md-checkmark';
+                iosName = focused ? 'ios-airplane' : 'ios-airplane-outline';
+                aosName = focused ? 'md-airplane' : 'md-airplane-outline';
+              } else if (route.name === 'Calendar') {
+                iosName = focused ? 'ios-calendar' : 'ios-calendar-outline';
+                aosName = focused ? 'md-calendar' : 'md-calendar-outline';
               }
                 
 
@@ -57,7 +57,7 @@ const BottomTabNavigator = () => {
             },
             })}
             tabBarOptions={{
-            activeTintColor: 'tomato',
+            activeTintColor: 'black',
             inactiveTintColor: 'gray',
             }}
         >
@@ -65,7 +65,7 @@ const BottomTabNavigator = () => {
             <Tab.Screen name="Notice" component={SettingsScreen} />
             <Tab.Screen name="Cash" component={SettingsScreen} />
             <Tab.Screen name="Travel" component={SettingsScreen} />
-            <Tab.Screen name="Calender" component={SettingsScreen} />
+            <Tab.Screen name="Calendar" component={SettingsScreen} />
         </Tab.Navigator>
     );
   };
