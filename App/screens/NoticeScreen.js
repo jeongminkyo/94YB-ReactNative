@@ -7,6 +7,9 @@ import {
 } from 'react-native';
 
 import Post from '../components/Post';
+import TopPicture from '../components/TopPicture';
+import Items from '../data/pictures';
+
 import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 
 const posts = [
@@ -77,6 +80,10 @@ const NoticeScreen = () => {
     return (
         <ScrollView
             style={styles.container}>
+            <View style={styles.picture}>
+                <TopPicture
+                    items={Items} />
+            </View>
             {
                 posts.map((post, index) => 
                 <Post 
