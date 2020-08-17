@@ -9,15 +9,6 @@ import CashScreen from '../screens/CashScreen';
 import TravelScreen from '../screens/TravelScreen';
 import CalendarScreen from '../screens/CalendarScreen';
 
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {

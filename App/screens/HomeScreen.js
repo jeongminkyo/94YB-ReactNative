@@ -8,19 +8,18 @@ import {
 import TopPicture from '../components/TopPicture';
 import Carosel from '../components/Carosel';
 import Items from '../data/pictures';
+import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 
 const HomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            
-                <View style={styles.picture}>
-                    <TopPicture
-                        items={Items} />
-                </View>
-                <View style={styles.carousels}>
-                    <Carosel items={Items} />
-                </View>
-            
+            <View style={styles.picture}>
+                <TopPicture
+                    items={Items} />
+            </View>
+            <View style={styles.carousels}>
+                <Carosel items={Items} />
+            </View>
         </View>
     );
 }
@@ -30,13 +29,19 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        height: '100%'
     },
     picture: {
         flex: 1
     },
     carousels: {
-        flex: 1
-    }
+        flex: 1,
+        width: '80%',
+        alignContent: 'center'
+    },
+    contentContainer: {
+        paddingBottom: isIphoneX() ? getBottomSpace() : 16,
+      },
   });
   
