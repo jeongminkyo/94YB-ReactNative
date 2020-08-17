@@ -3,14 +3,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, View } from 'react-native';
 
 import Icon from '../components/Icon';
+import HomeScreen from '../screens/HomeScreen';
+import NoticeScreen from '../screens/NoticeScreen';
+import CashScreen from '../screens/CashScreen';
+import TravelScreen from '../screens/TravelScreen';
+import CalendarScreen from '../screens/CalendarScreen';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
 
 function SettingsScreen() {
   return (
@@ -46,10 +44,10 @@ const BottomTabNavigator = () => {
                 iosName = focused ? 'ios-calendar' : 'ios-calendar-outline';
                 aosName = focused ? 'md-calendar' : 'md-calendar-outline';
               }
-                
+
 
               // You can return any component that you like here!
-              return <Icon 
+              return <Icon
                         iosName={iosName}
                         aosName={aosName}
                         size={size}
@@ -62,12 +60,12 @@ const BottomTabNavigator = () => {
             }}
         >
             <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Notice" component={SettingsScreen} />
-            <Tab.Screen name="Cash" component={SettingsScreen} />
-            <Tab.Screen name="Travel" component={SettingsScreen} />
-            <Tab.Screen name="Calendar" component={SettingsScreen} />
+            <Tab.Screen name="Notice" component={NoticeScreen} />
+            <Tab.Screen name="Cash" component={CashScreen} />
+            <Tab.Screen name="Travel" component={TravelScreen} />
+            <Tab.Screen name="Calendar" component={CalendarScreen} />
         </Tab.Navigator>
     );
   };
-  
+
   export default BottomTabNavigator;
