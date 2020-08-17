@@ -78,14 +78,11 @@ const NoticeScreen = () => {
         <ScrollView
             style={styles.container}>
             {
-                posts.map((post) => 
-                    <View>
-                        <Post 
-                            post={post}
-                            key={post.id}
-                        />
-                    </View>
-                )
+                posts.map((post, index) => 
+                <Post 
+                    post={post}
+                    key={index}
+                />)
             }
         </ScrollView>
     );

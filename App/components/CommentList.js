@@ -13,7 +13,7 @@ const CommentList = ({ comments }) => {
             </View>
             <View style={styles.contentStyle}>
                 {
-                    comments.map((comment) => <Comment
+                    comments.map((comment, index) => <Comment
                         comment={comment}
                         key={comment.id}
                     />)

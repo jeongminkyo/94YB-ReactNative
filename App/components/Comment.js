@@ -10,7 +10,7 @@ const Comment = ({ comment }) => {
                 <Text style = {[styles.headerDisplayName, {paddingTop: 10}]} >0</Text>
             </View>
             <View style={styles.contentStyle}>
-                {comment.title}
+                
             </View>
         </View>
     )
