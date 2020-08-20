@@ -30,7 +30,20 @@ const posts = [
                         "url": "https://94yb.s3.amazonaws.com/uploads/notice_attachment/s3/78/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2020-01-06_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_9.24.24.png"
                         }
     ],
-    "comments": []
+    "comments": [
+            {
+            "id": 3,
+            "content": "댓글 1\r\n",
+            "display_name": "관리자",
+            "created_at": "2020-08-20 23:11:40"
+            },
+            {
+            "id": 4,
+            "content": "댓글 2",
+            "display_name": "관리자",
+            "created_at": "2020-08-20 23:11:44"
+            }
+        ]
     },
     {
     "id": 33,
@@ -100,6 +113,7 @@ export default NoticeScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "white"
     },
     
       contentContainer: {

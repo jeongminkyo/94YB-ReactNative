@@ -7,7 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import NoticeScreen from '../screens/NoticeScreen';
 import CashScreen from '../screens/CashScreen';
 import TravelScreen from '../screens/TravelScreen';
-import CalendarScreen from '../screens/CalendarScreen';
+import MyAccountScreen from '../screens/MyAccountScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,9 +31,9 @@ const BottomTabNavigator = () => {
               } else if (route.name === 'Travel') {
                 iosName = focused ? 'ios-airplane' : 'ios-airplane-outline';
                 aosName = focused ? 'md-airplane' : 'md-airplane-outline';
-              } else if (route.name === 'Calendar') {
-                iosName = focused ? 'ios-calendar' : 'ios-calendar-outline';
-                aosName = focused ? 'md-calendar' : 'md-calendar-outline';
+              } else if (route.name === 'MyAccount') {
+                iosName = focused ? 'ios-person' : 'ios-person-outline';
+                aosName = focused ? 'md-person' : 'md-person-outline';
               }
 
 
@@ -54,7 +54,7 @@ const BottomTabNavigator = () => {
             <Tab.Screen name="Notice" component={NoticeScreen} />
             <Tab.Screen name="Cash" component={CashScreen} />
             <Tab.Screen name="Travel" component={TravelScreen} />
-            <Tab.Screen name="Calendar" component={CalendarScreen} />
+            <Tab.Screen name="MyAccount" component={MyAccountScreen} />
         </Tab.Navigator>
     );
   };

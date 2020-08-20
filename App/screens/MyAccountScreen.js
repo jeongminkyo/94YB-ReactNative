@@ -4,7 +4,7 @@ import {
     Text,
 } from 'react-native';
 
-const CalendarScreen = ({ navigation }) => {
+const MyAccountScreen = ({ navigation }) => {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Text>Calendar!</Text>
@@ -12,4 +12,4 @@ const CalendarScreen = ({ navigation }) => {
     );
 }
 
-export default CalendarScreen;
+export default MyAccountScreen;
