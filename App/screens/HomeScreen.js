@@ -12,7 +12,7 @@ import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 
 const HomeScreen = ({ navigation }) => {
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={styles.picture}>
                 <TopPicture
                     items={Items} />
@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
             <View style={styles.carousels}>
                 <Carosel items={Items} />
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     picture: {
-        flex: 1
+        flex: 1,
+        height: 408
     },
     carousels: {
         flex: 1,

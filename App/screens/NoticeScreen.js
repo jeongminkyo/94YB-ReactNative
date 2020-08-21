@@ -123,7 +123,8 @@ const styles = StyleSheet.create({
     },
 
     picture: {
-        flex: 1
+        flex: 1,
+        height: 408
     },
     carousels: {
         flex: 1,

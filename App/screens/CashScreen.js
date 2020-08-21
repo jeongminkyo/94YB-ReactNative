@@ -122,8 +122,14 @@ const CashScreen = () => {
 export default CashScreen;
 
 const styles = StyleSheet.create({
+    container: {
+        flexGrow: 1,
+        backgroundColor: "white"
+    },
+    
     cashContainer: {
-        borderTopColor: '#ecf0f5',
+        flex: 1,
+        borderTopColor: '#e2e5e9',
         borderTopWidth: 1,
         paddingTop: 40
     },
@@ -148,29 +154,13 @@ const styles = StyleSheet.create({
     storkeLine: {
         color: '#BEC5D0'
     },
-
-    container: {
-        flex: 1,
-        backgroundColor: "white"
-    },
     
-      contentContainer: {
-        paddingTop: 16,
-        paddingHorizontal: 16,
-        paddingBottom: isIphoneX() ? getBottomSpace() : 16,
-    },
 
     picture: {
-        flex: 1
-    },
-    carousels: {
         flex: 1,
-        width: '80%',
-        alignContent: 'center'
+        height: 408
     },
-    contentContainer: {
-        paddingBottom: isIphoneX() ? getBottomSpace() : 16
-    },
+    
 
     cashBody: {
         marginLeft: 20,
