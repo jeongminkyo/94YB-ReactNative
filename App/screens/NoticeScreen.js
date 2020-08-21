@@ -3,7 +3,8 @@ import {
     View,
     Text,
     StyleSheet,
-    ScrollView
+    ScrollView,
+    RefreshControl
 } from 'react-native';
 
 import Post from '../components/Post';
@@ -89,10 +90,28 @@ const posts = [
     }
 ]
 
+const wait = (timeout) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+}
+
 const NoticeScreen = () => {
+
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+
+        wait(2000).then(() => setRefreshing(false));
+    }, []);
+
     return (
         <ScrollView
-            style={styles.container}>
+            style={styles.container}
+            refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+              }>
             <View style={styles.picture}>
                 <TopPicture
                     items={Items} />

@@ -3,6 +3,7 @@ import {
     View,
     ScrollView,
     StyleSheet,
+    RefreshControl,
     Text
 } from 'react-native';
 import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
@@ -83,10 +84,28 @@ const totalCash = {
     "total_cash_update_at": "2020-07-30 15:09:50"
 }
 
+const wait = (timeout) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+}
+
+  
 const CashScreen = () => {
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+
+        wait(2000).then(() => setRefreshing(false));
+    }, []);
+
     return (
         <ScrollView
-            style={styles.container}>
+            style={styles.container}
+            refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+              }>
             <View style={styles.picture}>
                 <TopPicture
                     items={Items} />
