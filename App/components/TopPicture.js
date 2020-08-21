@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     width: '100%',
     resizeMode: 'cover', // or 'stretch'
     alignContent: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginBottom: 50
   },
 
   overlay: {

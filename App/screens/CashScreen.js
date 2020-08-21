@@ -2,7 +2,8 @@ import React from 'react';
 import {
     View,
     ScrollView,
-    StyleSheet
+    StyleSheet,
+    Text
 } from 'react-native';
 import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 
@@ -77,6 +78,11 @@ const cashes = [
     }
 ]
 
+const totalCash = {
+    "total_cash": 1101679,
+    "total_cash_update_at": "2020-07-30 15:09:50"
+}
+
 const CashScreen = () => {
     return (
         <ScrollView
@@ -85,13 +91,30 @@ const CashScreen = () => {
                 <TopPicture
                     items={Items} />
             </View>
-            {
-                cashes.map((cash, index) => 
-                <Cash 
-                    cash={cash}
-                    key={index}
-                />)
-            }
+            <View style={styles.cashContainer}>
+                <View style={styles.cashText}>
+                    <Text style={styles.storkeLine}>──────────</Text>
+                    <Text style={styles.cashTitle}>회비 관리</Text>
+                    <Text style={styles.storkeLine}>──────────</Text>
+                </View>
+                <View style={styles.cashBody}>
+                    <View style={styles.cashTitleStyle}>
+                        <Text style={styles.displayName}>총 회비</Text>
+                        <Text style={styles.money}>{totalCash.total_cash.toLocaleString()}</Text>
+                    </View>
+                    <View style={styles.cashDateStyle}>
+                        <Text style={styles.status}>업데이트</Text>
+                        <Text style={styles.date}>{totalCash.total_cash_update_at}</Text>
+                    </View>
+                </View>
+                {
+                    cashes.map((cash, index) => 
+                    <Cash 
+                        cash={cash}
+                        key={index}
+                    />)
+                }
+            </View>
         </ScrollView>
     );
 }
@@ -99,6 +122,33 @@ const CashScreen = () => {
 export default CashScreen;
 
 const styles = StyleSheet.create({
+    cashContainer: {
+        borderTopColor: '#ecf0f5',
+        borderTopWidth: 1,
+        paddingTop: 40
+    },
+
+    cashTitle: {
+        alignSelf: 'center',    
+        justifyContent: 'center', 
+        alignItems: 'center',
+        fontSize:15,
+        paddingLeft: 20,
+        paddingRight: 20
+    },
+
+    cashText: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        justifyContent: 'center',
+    },
+
+    storkeLine: {
+        color: '#BEC5D0'
+    },
+
     container: {
         flex: 1,
         backgroundColor: "white"
@@ -119,6 +169,48 @@ const styles = StyleSheet.create({
         alignContent: 'center'
     },
     contentContainer: {
-        paddingBottom: isIphoneX() ? getBottomSpace() : 16,
-      },
+        paddingBottom: isIphoneX() ? getBottomSpace() : 16
+    },
+
+    cashBody: {
+        marginLeft: 20,
+        marginRight: 20,
+        paddingTop: 17,
+        paddingBottom: 20,
+        borderBottomColor: '#ecf0f5',
+        borderBottomWidth: 1,
+    },
+
+    cashTitleStyle: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        justifyContent: 'space-between',
+        paddingBottom: 25
+    },
+
+    cashDateStyle: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+
+    displayName: {
+        fontSize: 16,
+    },
+
+    money: {
+        fontSize: 16
+    },
+
+    status: {
+        color: '#ec5621',
+    },
+
+    date: {
+        fontSize: 12,
+        color: '#9199a4',
+        paddingLeft: 12
+    }
+
   });

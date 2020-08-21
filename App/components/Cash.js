@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         paddingTop: 17,
         paddingBottom: 20,
         borderBottomColor: '#ecf0f5',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
     },
 
     cashTitleStyle: {
@@ -45,8 +45,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
         justifyContent: 'space-between',
         paddingBottom: 25
     },
