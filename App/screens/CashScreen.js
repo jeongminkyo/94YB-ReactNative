@@ -1,103 +1,54 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     View,
     ScrollView,
     StyleSheet,
     RefreshControl,
-    Text
+    Text,
+    Alert
 } from 'react-native';
-import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 
 import TopPicture from '../components/TopPicture';
 import Items from '../data/pictures';
 import Cash from '../components/Cash';
-
-const cashes = [
-    {
-    "id": 332,
-    "date": "2020-07-30",
-    "money": 15000,
-    "description": "7월 정규 회비",
-    "status": 0,
-    "display_name": "김용진"
-    },
-    {
-    "id": 331,
-    "date": "2020-07-30",
-    "money": 15000,
-    "description": "8월 정규 회비",
-    "status": 0,
-    "display_name": "권대훈"
-    },
-    {
-    "id": 330,
-    "date": "2020-07-30",
-    "money": 15000,
-    "description": "7월 정규 회비",
-    "status": 0,
-    "display_name": "권대훈"
-    },
-    {
-    "id": 329,
-    "date": "2020-07-30",
-    "money": 15000,
-    "description": "6월 정규 회비",
-    "status": 0,
-    "display_name": "권대훈"
-    },
-    {
-    "id": 328,
-    "date": "2020-07-27",
-    "money": 20000,
-    "description": "7월 정규 회비",
-    "status": 0,
-    "display_name": "정민교"
-    },
-    {
-    "id": 327,
-    "date": "2020-07-27",
-    "money": 20000,
-    "description": "7월 정규 회비",
-    "status": 0,
-    "display_name": "우남욱"
-    },
-    {
-    "id": 326,
-    "date": "2020-07-27",
-    "money": 20000,
-    "description": "7월 정규 회비",
-    "status": 0,
-    "display_name": "김민석"
-    },
-    {
-    "id": 325,
-    "date": "2020-07-22",
-    "money": 20000,
-    "description": "7월 정규 회비",
-    "status": 0,
-    "display_name": "박태현"
-    }
-]
-
-const totalCash = {
-    "total_cash": 1101679,
-    "total_cash_update_at": "2020-07-30 15:09:50"
-}
-
-const wait = (timeout) => {
-    return new Promise(resolve => {
-      setTimeout(resolve, timeout);
-    });
-}
-
   
 const CashScreen = () => {
     const [refreshing, setRefreshing] = React.useState(false);
+    const [cashes, setCashes] = React.useState([]);
+    const [totalCash, setTotalCash] = React.useState({
+        totalCash: 0,
+        TotalCashUpdateAt: ''
+    });
 
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
 
-        wait(2000).then(() => setRefreshing(false));
+        getCashInfo(1).then(res => setRefreshing(false));
+    }, []);
+
+    const getCashInfo = async (page) => {
+        try {
+            const res = await fetch(`https://yb94.name/api/v1/cashes?${page}`);
+            const json = await res.json();
+            setCashes(json.cashes);
+            setTotalCash({
+                totalCash: json.total_cash,
+                TotalCashUpdateAt: json.total_cash_update_at
+            });
+        }
+        catch (error) {
+            showError('알 수 없는 에러가 발생했습니다.');
+        }
+    }
+
+    const showError = (message) => {
+        setTimeout(() => {
+            Alert.alert(message)
+        }, 500)
+    }
+
+    useEffect(() => {
+        getCashInfo(1);
     }, []);
 
     return (
@@ -119,11 +70,11 @@ const CashScreen = () => {
                 <View style={styles.cashBody}>
                     <View style={styles.cashTitleStyle}>
                         <Text style={styles.displayName}>총 회비</Text>
-                        <Text style={styles.money}>{totalCash.total_cash.toLocaleString()}</Text>
+                        <Text style={styles.money}>{totalCash.totalCash.toLocaleString()}</Text>
                     </View>
                     <View style={styles.cashDateStyle}>
                         <Text style={styles.status}>업데이트</Text>
-                        <Text style={styles.date}>{totalCash.total_cash_update_at}</Text>
+                        <Text style={styles.date}>{totalCash.TotalCashUpdateAt}</Text>
                     </View>
                 </View>
                 {

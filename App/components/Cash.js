@@ -14,10 +14,20 @@ const Cash = ({ cash }) => {
         return showStatus
     };
 
+    const printDisplayName = (DisplayName, status) => {
+        let name = DisplayName
+        if (status === 1) {
+            name = ""
+        } else if (status === 0) {
+            name = name + " "
+        }
+        return name
+    };
+
     return (
         <View style={styles.cashBody}>
             <View style={styles.cashTitleStyle}>
-                <Text style={styles.displayName}>{cash.display_name} {cash.description}</Text>
+                <Text style={styles.displayName}>{printDisplayName(cash.display_name, cash.status)}{cash.description}</Text>
                 <Text style={styles.money}>{cash.money.toLocaleString()}</Text>
             </View>
             <View style={styles.cashDateStyle}>
