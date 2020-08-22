@@ -8,9 +8,8 @@ import {
 import TopPicture from '../components/TopPicture';
 import Carosel from '../components/Carosel';
 import Items from '../data/pictures';
-import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.picture}>
@@ -40,9 +39,6 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '80%',
         alignContent: 'center'
-    },
-    contentContainer: {
-        paddingBottom: isIphoneX() ? getBottomSpace() : 16,
-      },
+    }
   });
   

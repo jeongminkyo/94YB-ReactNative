@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "YB94ReactNative.app"
+               BuildableName = "YB94.app"
                BlueprintName = "YB94ReactNative"
                ReferencedContainer = "container:YB94ReactNative.xcodeproj">
             </BuildableReference>
@@ -55,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "YB94ReactNative.app"
+            BuildableName = "YB94.app"
             BlueprintName = "YB94ReactNative"
             ReferencedContainer = "container:YB94ReactNative.xcodeproj">
          </BuildableReference>
@@ -72,7 +72,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "YB94ReactNative.app"
+            BuildableName = "YB94.app"
             BlueprintName = "YB94ReactNative"
             ReferencedContainer = "container:YB94ReactNative.xcodeproj">
          </BuildableReference>

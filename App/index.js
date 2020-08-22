@@ -8,7 +8,7 @@ import BottomTabNavigator from './navigators/BottomTabNavigator';
 const App = () => {
   // do stuff while splash screen is shown
   // After having done stuff (such as async tasks) hide the splash screen
-  setTimeout(() => SplashScreen.hide(), 1000);
+  setTimeout(() => SplashScreen.hide(), 5000);
 
   return (
     <NavigationContainer>
