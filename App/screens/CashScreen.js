@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
     View,
-    ScrollView,
     StyleSheet,
     RefreshControl,
     Text,
-    Alert
+    Alert,
+    FlatList
 } from 'react-native';
 
 import TopPicture from '../components/TopPicture';
@@ -13,32 +13,48 @@ import Items from '../data/pictures';
 import Cash from '../components/Cash';
   
 const CashScreen = () => {
-    const [refreshing, setRefreshing] = React.useState(false);
-    const [cashes, setCashes] = React.useState([]);
-    const [totalCash, setTotalCash] = React.useState({
+    const [refreshing, setRefreshing] = useState(false);
+    const [cashes, setCashes] = useState([]);
+    const [page, setPages] = useState(1);
+    const [totalPage, setTotalPages] = useState(1);
+    const [totalCash, setTotalCash] = useState({
         totalCash: 0,
         TotalCashUpdateAt: ''
     });
 
-    const onRefresh = React.useCallback(() => {
+    const onRefresh = useCallback(() => {
         setRefreshing(true);
-
-        getCashInfo(1).then(res => setRefreshing(false));
+        setPages(1)
+        setRefreshing(false);
     }, []);
 
     const getCashInfo = async (page) => {
         try {
-            const res = await fetch(`https://yb94.name/api/v1/cashes?${page}`);
+            const res = await fetch(`https://yb94.name/api/v1/cashes?page=${page}`);
             const json = await res.json();
-            setCashes(json.cashes);
+            if (page === 1) {
+                setCashes([...json.cashes]);   
+            } else {
+                setCashes([...cashes, ...json.cashes]);
+            }
             setTotalCash({
                 totalCash: json.total_cash,
                 TotalCashUpdateAt: json.total_cash_update_at
             });
+            setTotalPages(json.total_page)
         }
         catch (error) {
             showError('알 수 없는 에러가 발생했습니다.');
         }
+    }
+
+    const onEndReached = () => {
+        if (!onEndReachedCalledDuringMomentum) {
+            if (page < totalPage) {
+                setPages(page + 1)
+            }
+            onEndReachedCalledDuringMomentum = true;
+          }
     }
 
     const showError = (message) => {
@@ -47,45 +63,55 @@ const CashScreen = () => {
         }, 500)
     }
 
+    const renderItem = ({ item }) => {
+        return (
+            <Cash cash={item}/>
+        );
+    };
+
     useEffect(() => {
-        getCashInfo(1);
-    }, []);
+        getCashInfo(page)
+    },[page]);
 
     return (
-        <ScrollView
-            style={styles.container}
-            refreshControl={
-                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-              }>
-            <View style={styles.picture}>
-                <TopPicture
-                    items={Items} />
-            </View>
-            <View style={styles.cashContainer}>
-                <View style={styles.cashText}>
-                    <Text style={styles.storkeLine}>──────────</Text>
-                    <Text style={styles.cashTitle}>회비 관리</Text>
-                    <Text style={styles.storkeLine}>──────────</Text>
-                </View>
-                <View style={styles.cashBody}>
-                    <View style={styles.cashTitleStyle}>
-                        <Text style={styles.displayName}>총 회비</Text>
-                        <Text style={styles.money}>{totalCash.totalCash.toLocaleString()}</Text>
+        <View style={styles.container}>
+            <FlatList
+                ListHeaderComponent={() => (
+                    <View>
+                        <View style={styles.picture}>
+                            <TopPicture
+                                items={Items} />
+                        </View>
+                        <View style={styles.cashContainer}>
+                            <View style={styles.cashText}>
+                                <Text style={styles.storkeLine}>──────────</Text>
+                                <Text style={styles.cashTitle}>회비 관리</Text>
+                                <Text style={styles.storkeLine}>──────────</Text>
+                            </View>
+                            <View style={styles.cashBody}>
+                                <View style={styles.cashTitleStyle}>
+                                    <Text style={styles.displayName}>총 회비</Text>
+                                    <Text style={styles.money}>{totalCash.totalCash.toLocaleString()}</Text>
+                                </View>
+                                <View style={styles.cashDateStyle}>
+                                    <Text style={styles.status}>업데이트</Text>
+                                    <Text style={styles.date}>{totalCash.TotalCashUpdateAt}</Text>
+                                </View>
+                            </View>
+                        </View>
                     </View>
-                    <View style={styles.cashDateStyle}>
-                        <Text style={styles.status}>업데이트</Text>
-                        <Text style={styles.date}>{totalCash.TotalCashUpdateAt}</Text>
-                    </View>
-                </View>
-                {
-                    cashes.map((cash, index) => 
-                    <Cash 
-                        cash={cash}
-                        key={index}
-                    />)
-                }
-            </View>
-        </ScrollView>
+                )}
+                keyExtractor={cash => cash.id.toString()}
+                refreshControl={
+                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                  }
+                data={cashes}
+                renderItem={renderItem}
+                onEndReached={onEndReached}
+                onEndReachedThreshold={0}
+                onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
+            />
+        </View>
     );
 }
 
@@ -173,4 +199,4 @@ const styles = StyleSheet.create({
         paddingLeft: 12
     }
 
-  });
+});

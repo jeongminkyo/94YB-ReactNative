@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
     View,
     StyleSheet,
-    ScrollView,
-    RefreshControl
+    RefreshControl,
+    Alert,
+    FlatList
 } from 'react-native';
 
 import Post from '../components/Post';
@@ -14,24 +15,40 @@ import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 
 const NoticeScreen = () => {
 
-    const [refreshing, setRefreshing] = React.useState(false);
-    const [posts, setPosts] = React.useState([]);
+    const [refreshing, setRefreshing] = useState(false);
+    const [posts, setPosts] = useState([]);
+    const [page, setPages] = useState(1);
+    const [totalPage, setTotalPages] = useState(1);
 
-    const onRefresh = React.useCallback(() => {
+    const onRefresh = useCallback(() => {
         setRefreshing(true);
-
-        getPostInfo(1).then(res => setRefreshing(false));
+        setPages(1);
+        setRefreshing(false);
     }, []);
 
     const getPostInfo = async (page) => {
         try {
             const res = await fetch(`https://yb94.name/api/v1/notices?${page}`);
             const json = await res.json();
-            setPosts(json.notices);
+            if (page === 1) {
+                setPosts([...json.notices])
+            } else {
+                setPosts([...posts, ...json.notices]);
+            }
+            setTotalPages(json.total_page)
         }
         catch (error) {
             showError('알 수 없는 에러가 발생했습니다.');
         }
+    }
+
+    const onEndReached = () => {
+        if (!onEndReachedCalledDuringMomentum) {
+            if (page < totalPage) {
+                setPages(page + 1)
+            }
+            onEndReachedCalledDuringMomentum = true;
+          }
     }
 
     const showError = (message) => {
@@ -40,28 +57,36 @@ const NoticeScreen = () => {
         }, 500)
     }
 
+    const renderItem = ({ item }) => {
+        return (
+            <Post post={item}/>
+        );
+    };
+
     useEffect(() => {
-        getPostInfo(1);
-    }, []);
+        getPostInfo(page);
+    }, [page]);
 
     return (
-        <ScrollView
-            style={styles.container}
-            refreshControl={
-                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-              }>
-            <View style={styles.picture}>
-                <TopPicture
-                    items={Items} />
-            </View>
-            {
-                posts.map((post, index) => 
-                <Post 
-                    post={post}
-                    key={index}
-                />)
-            }
-        </ScrollView>
+        <View style={styles.container}>
+            <FlatList
+                ListHeaderComponent={() => (
+                    <View style={styles.picture}>
+                        <TopPicture
+                            items={Items} />
+                    </View>
+                )}
+                keyExtractor={post => post.id.toString()}
+                refreshControl={
+                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                  }
+                data={posts}
+                renderItem={renderItem}
+                onEndReached={onEndReached}
+                onEndReachedThreshold={0}
+                onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
+            />
+        </View>
     );
 }
 
@@ -73,7 +98,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white"
     },
     
-      contentContainer: {
+    contentContainer: {
         paddingTop: 16,
         paddingHorizontal: 16,
         paddingBottom: isIphoneX() ? getBottomSpace() : 16,
@@ -82,13 +107,5 @@ const styles = StyleSheet.create({
     picture: {
         flex: 1,
         height: 408
-    },
-    carousels: {
-        flex: 1,
-        width: '80%',
-        alignContent: 'center'
-    },
-    contentContainer: {
-        paddingBottom: isIphoneX() ? getBottomSpace() : 16,
-      },
-  });
+    }
+});
