@@ -28,7 +28,7 @@ const Cash = ({ cash }) => {
         <View style={styles.cashBody}>
             <View style={styles.cashTitleStyle}>
                 <Text style={styles.displayName}>{printDisplayName(cash.display_name, cash.status)}{cash.description}</Text>
-                <Text style={styles.money}>{cash.money.toLocaleString()}</Text>
+                <Text style={styles.money}>{cash.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</Text>
             </View>
             <View style={styles.cashDateStyle}>
                 <Text style={styles.status}>{printStatus(cash.status)}</Text>

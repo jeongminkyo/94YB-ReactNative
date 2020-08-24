@@ -93,7 +93,7 @@ const CashScreen = () => {
                             <View style={styles.cashBody}>
                                 <View style={styles.cashTitleStyle}>
                                     <Text style={styles.displayName}>총 회비</Text>
-                                    <Text style={styles.money}>{totalCash.totalCash.toLocaleString()}</Text>
+                                    <Text style={styles.money}>{totalCash.totalCash.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</Text>
                                 </View>
                                 <View style={styles.cashDateStyle}>
                                     <Text style={styles.status}>업데이트</Text>
