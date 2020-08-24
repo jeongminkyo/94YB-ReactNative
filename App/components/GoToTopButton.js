@@ -14,6 +14,7 @@ const GoToTopButton = () => {
             <Image
                 source={{ uri:'https://uxwing.com/wp-content/themes/uxwing/download/02-arrow/angle-circle-arrow-up.png' }}
                 style={styles.FloatingButtonStyle}
+                borderRadius={50}
             />
         </TouchableOpacity>
     )
@@ -33,10 +34,9 @@ const styles = StyleSheet.create({
       },
     
       FloatingButtonStyle: {
-        resizeMode: 'contain',
+        resizeMode: 'cover',
         width: 50,
         height: 50,
-        backgroundColor: 'white',
-        borderRadius:30,
+        backgroundColor: 'white'
       },
 })
