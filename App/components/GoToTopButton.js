@@ -3,7 +3,7 @@ import { TouchableOpacity, Image, StyleSheet } from 'react-native'
 
 const GoToTopButton = () => {
     const goToTop = () => {
-        this.flatlist.scrollToIndex({ index: 0, viewPosition: -1 })
+        this.flatlist.scrollToOffset({ x: 0, y: 0, animated: true })
     }
     
     return (
