@@ -51,6 +51,8 @@ const CashScreen = () => {
 
     const onEndReached = () => {
         if (!onEndReachedCalledDuringMomentum) {
+            console.log(`total_page : ${totalPage}`)
+            console.log(`page : ${page}`)
             if (page < totalPage) {
                 setPages(page + 1)
             }
@@ -109,9 +111,8 @@ const CashScreen = () => {
                   }
                 data={cashes}
                 renderItem={renderItem}
-                initialNumToRender={7}
                 onEndReached={onEndReached}
-                onEndReachedThreshold={0}
+                onEndReachedThreshold={0.3}
                 onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
             />
             <GoToTopButton />
