@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import TopPicture from '../components/TopPicture';
+import GoToTopButton from '../components/GoToTopButton';
 import Items from '../data/pictures';
 import Cash from '../components/Cash';
   
@@ -76,6 +77,7 @@ const CashScreen = () => {
     return (
         <View style={styles.container}>
             <FlatList
+                ref={(c) => { this.flatlist = c }}
                 ListHeaderComponent={() => (
                     <View>
                         <View style={styles.picture}>
@@ -107,10 +109,12 @@ const CashScreen = () => {
                   }
                 data={cashes}
                 renderItem={renderItem}
+                initialNumToRender={7}
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0}
                 onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
             />
+            <GoToTopButton />
         </View>
     );
 }

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import Post from '../components/Post';
+import GoToTopButton from '../components/GoToTopButton';
 import TopPicture from '../components/TopPicture';
 import Items from '../data/pictures';
 
@@ -70,6 +71,7 @@ const NoticeScreen = () => {
     return (
         <View style={styles.container}>
             <FlatList
+                ref={(c) => { this.flatlist = c }}
                 ListHeaderComponent={() => (
                     <View style={styles.picture}>
                         <TopPicture
@@ -82,10 +84,12 @@ const NoticeScreen = () => {
                   }
                 data={posts}
                 renderItem={renderItem}
+                initialNumToRender={7}
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0}
                 onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
             />
+            <GoToTopButton />
         </View>
     );
 }
