@@ -29,7 +29,7 @@ const NoticeScreen = () => {
 
     const getPostInfo = async (page) => {
         try {
-            const res = await fetch(`https://yb94.name/api/v1/notices?${page}`);
+            const res = await fetch(`https://yb94.name/api/v1/notices?page=${page}`);
             const json = await res.json();
             if (page === 1) {
                 setPosts([...json.notices])
@@ -88,6 +88,9 @@ const NoticeScreen = () => {
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0}
                 onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
+                initialNumToRender={5}
+                maxToRenderPerBatch={10}
+                windowSize={10}
             />
             <GoToTopButton />
         </View>

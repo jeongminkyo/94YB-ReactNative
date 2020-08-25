@@ -114,6 +114,9 @@ const CashScreen = () => {
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0.3}
                 onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
+                initialNumToRender={5}
+                maxToRenderPerBatch={10}
+                windowSize={10}
             />
             <GoToTopButton />
         </View>
