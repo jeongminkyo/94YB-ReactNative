@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
     View,
     ScrollView,
@@ -7,6 +7,8 @@ import {
     Text
 } from 'react-native';
 
+import { UserContext } from '../Context/User';
+
 import SplashScreen from 'react-native-splash-screen';
 import TopPicture from '../components/TopPicture';
 import Items from '../data/pictures';
@@ -14,6 +16,8 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 
 const LoginScreen = () => {
+
+    const { login } = useContext(UserContext);
 
     useEffect(() => {
         SplashScreen.hide();
