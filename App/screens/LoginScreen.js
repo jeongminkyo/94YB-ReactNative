@@ -27,15 +27,15 @@ const LoginScreen = () => {
             </View>
             <SafeAreaView style={styles.content}>
                 <View style={styles.FormContainer}>
-                    <Text>YB94</Text>
-                    <Input style={{marginBottom: 16}} placeholder="Email" />
+                    <Text style={styles.textStyle}>YB94</Text>
+                    <Input style={{ marginBottom: 16 }} placeholder="Email" />
                     <Input
-                    style={{marginBottom: 16}}
+                    style={{ marginBottom: 16 }}
                     placeholder="Password"
                     secureTextEntry={true}
                     />
                     <Button
-                    style={{marginBottom: 24, backgroundColor: '#333333'}}
+                    style={{ marginBottom: 24, backgroundColor: '#333333' }}
                     label="로그인"
                     onPress={() => {
                         login('dev.yakuza@gmail.com', 'password');
@@ -76,7 +76,18 @@ const styles = StyleSheet.create({
     
     FormContainer: {
         width: '100%',
-        padding: 40
+        padding: 40,
+        paddingTop: 20
+    },
+
+    textStyle: {
+        marginBottom: 40,
+        fontSize: 34,
+        color: "#333333",
+        fontWeight: 'bold',
+        alignSelf: 'center',    
+        justifyContent: 'center', 
+        alignItems: 'center' 
     }
   });
   

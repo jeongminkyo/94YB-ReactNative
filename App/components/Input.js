@@ -13,13 +13,13 @@ const Input = ({
     <View style={[style, styles.container]}>
       <TextInput
         style={styles.inputStyle}
-        selectionColor="#FFFFFF"
+        selectionColor="#333333"
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType ? keyboardType : 'default'}
         autoCapitalize="none"
         autoCorrect={false}
         allowFontScaling={false}
-        placeholderTextColor="#FFFFFF"
+        placeholderTextColor="#333333"
         placeholder={placeholder}
         clearButtonMode={clearMode ? 'while-editing' : 'never'}
         onChangeText={onChangeText}
