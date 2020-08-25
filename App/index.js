@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 import BottomTabNavigator from './navigators/BottomTabNavigator';
+import LoginNavigator from './navigators/LoginNavigator';
+
+import { UserContext, UserContextProvider } from './Context/User'
 
 const App = () => {
-  // do stuff while splash screen is shown
-  // After having done stuff (such as async tasks) hide the splash screen
-  setTimeout(() => SplashScreen.hide(), 1000);
+  const {isLoading, userInfo} = useContext(UserContext);
 
+  if (isLoading === true) {
+    return <Loading />;
+  }
+  
   return (
-    <NavigationContainer>
-      <BottomTabNavigator />
-    </NavigationContainer>
+    <UserContextProvider>
+      <NavigationContainer>
+        {userInfo ? <BottomTabNavigator /> : <LoginNavigator />}
+      </NavigationContainer>
+    </UserContextProvider>
   );
 };
 
