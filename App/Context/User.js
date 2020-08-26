@@ -3,7 +3,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 const UserContext = createContext({
     isLoading: false,
-    userInfo: undefined
+    userInfo: undefined,
+    login: (email, password) => {},
+    getUserInfo: () => {}
   });
 
 const UserContextProvider = ({ children }) => {
@@ -44,12 +46,12 @@ const UserContextProvider = ({ children }) => {
 
     return (
         <UserContext.Provider
-          value={
+          value={{
             isLoading,
             userInfo,
             login,
             getUserInfo
-          }>
+          }}>
             {children}
         </UserContext.Provider>
       );

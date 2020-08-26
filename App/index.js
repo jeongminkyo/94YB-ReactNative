@@ -9,11 +9,11 @@ import Loading from './components/Loading';
 import { UserContext, UserContextProvider } from './Context/User'
 
 const App = () => {
-  const {isLoading, userInfo} = useContext(UserContext);
+  const { isLoading, userInfo } = useContext(UserContext);
 
-  // if (isLoading === false) {
-  //   return <Loading />;
-  // }
+  if (isLoading === false) {
+    return <Loading />;
+  }
   
   return (
     <UserContextProvider>
