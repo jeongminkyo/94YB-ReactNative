@@ -1,25 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigator from './navigators/BottomTabNavigator';
-import LoginNavigator from './navigators/LoginNavigator';
+import Navigator from './navigators/Navigator';
 
-import Loading from './components/Loading';
-import { UserContext, UserContextProvider } from './Context/User'
+import { UserContextProvider } from './Context/User'
 
 const App = () => {
-  const { isLoading, userInfo } = useContext(UserContext);
-
-  if (isLoading === false) {
-    return <Loading />;
-  }
-  
   return (
     <UserContextProvider>
-      <NavigationContainer>
-        {userInfo ? <BottomTabNavigator /> : <LoginNavigator />}
-      </NavigationContainer>
+      <Navigator />
     </UserContextProvider>
   );
 };

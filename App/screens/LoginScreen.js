@@ -15,7 +15,7 @@ import Items from '../data/pictures';
 import Input from '../components/Input';
 import Button from '../components/Button';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
 
     const { login } = useContext(UserContext);
 
