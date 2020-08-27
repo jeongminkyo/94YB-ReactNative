@@ -10,6 +10,8 @@ target 'YB94ReactNative' do
 
 
 
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
+
   target 'YB94ReactNativeTests' do
     inherit! :complete
     # Pods for testing
