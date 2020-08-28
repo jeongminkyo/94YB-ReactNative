@@ -12,6 +12,13 @@ target 'YB94ReactNative' do
 
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
 
+  # add the Firebase pod for Google Analytics
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  # add pods for any other desired Firebase products
+  # https://firebase.google.com/docs/ios/setup#available-pods
+
   target 'YB94ReactNativeTests' do
     inherit! :complete
     # Pods for testing

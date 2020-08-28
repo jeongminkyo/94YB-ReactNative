@@ -2,14 +2,17 @@ import React from 'react';
 
 import 'react-native-gesture-handler';
 import Navigator from './navigators/Navigator';
+import FCMContainer from './components/FCMContainer';
 
 import { UserContextProvider } from './Context/User'
 
 const App = () => {
   return (
-    <UserContextProvider>
-      <Navigator />
-    </UserContextProvider>
+    <FCMContainer>
+      <UserContextProvider>
+        <Navigator />
+      </UserContextProvider>
+    </FCMContainer>
   );
 };
 
