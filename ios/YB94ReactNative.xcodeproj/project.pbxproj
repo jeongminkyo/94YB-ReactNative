@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		140D033424FA422A0044C107 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 140D033324FA422A0044C107 /* GoogleService-Info.plist */; };
 		14B4000A24F113A800C02ACA /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14B4000924F113A800C02ACA /* SplashScreen.storyboard */; };
 		19EB659F3372FCDB476B676E /* libPods-YB94ReactNative-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D92C5F2DE90166D16E38EE55 /* libPods-YB94ReactNative-tvOSTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -18,7 +19,6 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* YB94ReactNativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* YB94ReactNativeTests.m */; };
 		3293B9928B3A30A3AAA3C4D6 /* libPods-YB94ReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3278F80F682C3A9ACEB82BB3 /* libPods-YB94ReactNative.a */; };
-		74BA1D9424F8F53C00DED11C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74BA1D9324F8F53C00DED11C /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		84CC2E70CC8014E5FF6B7103 /* libPods-YB94ReactNative-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2054FD922B8384DFB37F81C /* libPods-YB94ReactNative-tvOS.a */; };
 		ED958975A4345316ACB642CC /* libPods-YB94ReactNative-YB94ReactNativeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3D7BDB537003B4A9A3B86F /* libPods-YB94ReactNative-YB94ReactNativeTests.a */; };
@@ -52,6 +52,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = YB94ReactNative/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = YB94ReactNative/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = YB94ReactNative/main.m; sourceTree = "<group>"; };
+		140D033324FA422A0044C107 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		14B4000924F113A800C02ACA /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 		18F8286567CED1110CF3DC46 /* Pods-YB94ReactNative-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YB94ReactNative-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-YB94ReactNative-tvOSTests/Pods-YB94ReactNative-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		19AE6709F986B06BCA8D5CB3 /* Pods-YB94ReactNative-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YB94ReactNative-tvOS.release.xcconfig"; path = "Target Support Files/Pods-YB94ReactNative-tvOS/Pods-YB94ReactNative-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		74A696D924E2888C0060ADEF /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SimpleLineIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		74A696DA24E2888C0060ADEF /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		74A696DB24E2888C0060ADEF /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Zocial.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		74BA1D9324F8F53C00DED11C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74BA1D9524F8F71100DED11C /* YB94.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = YB94.entitlements; path = YB94ReactNative/YB94.entitlements; sourceTree = "<group>"; };
 		753265C95E420D242872383D /* Pods-YB94ReactNative-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YB94ReactNative-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-YB94ReactNative-tvOSTests/Pods-YB94ReactNative-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = YB94ReactNative/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
-				74BA1D9324F8F53C00DED11C /* GoogleService-Info.plist */,
+				140D033324FA422A0044C107 /* GoogleService-Info.plist */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
@@ -396,7 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				74BA1D9424F8F53C00DED11C /* GoogleService-Info.plist in Resources */,
+				140D033424FA422A0044C107 /* GoogleService-Info.plist in Resources */,
 				14B4000A24F113A800C02ACA /* SplashScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);

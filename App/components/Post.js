@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, Dimensions } from 'react-native';
-import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
+import { View, StyleSheet, Text, Dimensions } from 'react-native';
+import FitImage from 'react-native-fit-image';
 
 import CommentList from './CommentList';
 // import CommentWrite from './CommentWrite';
@@ -19,7 +19,7 @@ const Post = ({ post }) => {
                 <View style={styles.contentStyle}>
                     <Text style={styles.contentTextStyle}>{post.context}</Text>
                     {
-                        post.attachments.map((attachment) => <Image
+                        post.attachments.map((attachment) => <FitImage
                             style={styles.imageStyle}
                             source={{ uri: attachment.url }}
                             resizeMode={'contain'}
@@ -80,11 +80,11 @@ const styles = StyleSheet.create({
     },
 
     contentTextStyle: {
-        fontSize: 16
+        fontSize: 16,
+        marginBottom: 10
     },
 
     imageStyle: {
-        width: '100%',
-        height: win.height
+        
     },
 });
