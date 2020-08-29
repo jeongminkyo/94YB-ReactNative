@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     View,
     ScrollView,
     StyleSheet
 } from 'react-native';
 
+import SplashScreen from 'react-native-splash-screen';
 import TopPicture from '../components/TopPicture';
 import Carosel from '../components/Carosel';
 import Items from '../data/pictures';
 
 const HomeScreen = () => {
+
+    useEffect(() => {
+        SplashScreen.hide();
+      }, []);
+
     return (
         <ScrollView style={styles.container}>
             <View style={styles.picture}>
