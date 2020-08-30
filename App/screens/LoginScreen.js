@@ -4,7 +4,7 @@ import {
     ScrollView,
     StyleSheet,
     SafeAreaView,
-    Text
+    Image
 } from 'react-native';
 
 import { UserContext } from '../Context/User';
@@ -17,7 +17,7 @@ import Button from '../components/Button';
 
 const LoginScreen = ({ navigation }) => {
 
-    const { login } = useContext(UserContext);
+    const { login, googleLogin } = useContext(UserContext);
 
     useEffect(() => {
         SplashScreen.hide();
@@ -31,7 +31,9 @@ const LoginScreen = ({ navigation }) => {
             </View>
             <SafeAreaView style={styles.content}>
                 <View style={styles.FormContainer}>
-                    <Text style={styles.textStyle}>YB94</Text>
+                <Image
+                style={styles.image}
+                source={require('../images/title.png')}/>
                     <Input style={{ marginBottom: 16 }} placeholder="Email" />
                     <Input
                     style={{ marginBottom: 16 }}
@@ -46,12 +48,11 @@ const LoginScreen = ({ navigation }) => {
                     }}
                     />
                     <Button
-                    style={{ marginBottom: 24, backgroundColor: '#FEE500', borderColor: '#FEE500' }}
-                    label_style={{ color: "#000000" }}
-                    label="Kakao 로그인"
-                    onPress={() => {
-                        login('dev.yakuza@gmail.com', 'password');
-                    }}
+                    style={{ backgroundColor: '#4285F4', borderColor: '#4285F4' }}
+                    label_style={{ color: "#FFFFFF" }}
+                    label="Google 로그인"
+                    icon={{ iosName: 'ios-logo-google', aosName:'md-logo-google', size: 15, color: 'white' }}
+                    onPress={googleLogin}
                     />
                 </View>
             </SafeAreaView>
@@ -81,17 +82,13 @@ const styles = StyleSheet.create({
     FormContainer: {
         width: '100%',
         padding: 40,
-        paddingTop: 20
+        paddingTop: 0
     },
 
-    textStyle: {
-        marginBottom: 40,
-        fontSize: 34,
-        color: "#333333",
-        fontWeight: 'bold',
-        alignSelf: 'center',    
-        justifyContent: 'center', 
-        alignItems: 'center' 
+    image: {
+        height:150,
+        width:'100%',
+        resizeMode: 'center'
     }
   });
   
