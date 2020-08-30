@@ -51,8 +51,6 @@ const CashScreen = () => {
 
     const onEndReached = () => {
         if (!onEndReachedCalledDuringMomentum) {
-            console.log(`total_page : ${totalPage}`)
-            console.log(`page : ${page}`)
             if (page < totalPage) {
                 setPages(page + 1)
             }
@@ -79,7 +77,7 @@ const CashScreen = () => {
     return (
         <View style={styles.container}>
             <FlatList
-                ref={(c) => { this.flatlist = c }}
+                ref={(c) => { flatlist = c }}
                 ListHeaderComponent={() => (
                     <View>
                         <View style={styles.picture}>

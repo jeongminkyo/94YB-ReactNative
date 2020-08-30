@@ -1,6 +1,5 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text, View } from 'react-native';
 
 import Icon from '../components/Icon';
 import HomeScreen from '../screens/HomeScreen';
@@ -23,11 +22,11 @@ const BottomTabNavigator = () => {
                 iosName = focused ? 'ios-home' : 'ios-home-outline';
                 aosName = focused ? 'md-home' : 'md-home-outline';
               } else if (route.name === 'Notice') {
-                iosName = focused ? 'ios-alert' : 'ios-alert-outline';
-                aosName = focused ? 'md-alert' : 'md-alert-outline';
+                iosName = focused ? 'ios-clipboard' : 'ios-clipboard-outline';
+                aosName = focused ? 'md-clipboard' : 'md-clipboard-outline';
               } else if (route.name === 'Cash') {
-                iosName = focused ? 'ios-cash' : 'ios-cash-outline';
-                aosName = focused ? 'md-cash' : 'md-cash-outline';
+                iosName = focused ? 'ios-wallet' : 'ios-wallet-outline';
+                aosName = focused ? 'md-wallet' : 'md-wallet-outline';
               } else if (route.name === 'Travel') {
                 iosName = focused ? 'ios-airplane' : 'ios-airplane-outline';
                 aosName = focused ? 'md-airplane' : 'md-airplane-outline';

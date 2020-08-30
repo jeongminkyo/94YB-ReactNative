@@ -72,7 +72,7 @@ const TravelScreen = () => {
     return (
         <View style={styles.container}>
             <FlatList
-                ref={(c) => { this.flatlist = c }}
+                ref={(c) => { flatlist = c }}
                 ListHeaderComponent={() => (
                     <View style={styles.picture}>
                         <TopPicture
