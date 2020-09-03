@@ -104,7 +104,7 @@ const MyAccountScreen = ({ navigation }) => {
                             <TouchableOpacity style={styles.button} onPress={onEndReached}>
                                 <Icon 
                                 iosName="ios-chevron-down-outline"
-                                andName="md-chevron-down-outline"
+                                aosName="md-chevron-down-outline"
                                 color={'black'}
                                 size={30}
                                 />
