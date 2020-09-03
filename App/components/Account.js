@@ -10,10 +10,10 @@ import {
 } from 'react-native';
 import Clipboard from "@react-native-community/clipboard";
 
-const Account = () => {
+const Account = ({ bank, accountNum }) => {
     
     const copyClipBoard = () => {
-        Clipboard.setString('356-0022-3397-93');
+        Clipboard.setString(accountNum);
         console.log('touch!')
         let msg = '계좌번호가 복사되었습니다.'
 
@@ -28,20 +28,22 @@ const Account = () => {
         <TouchableHighlight
         underlayColor='#F6F6F6'
         onPress={copyClipBoard}
-        style={styles.container}>
+        style={styles.container}
+        >
             <>
                 <View style={styles.colorLabel} />
                 <View style={styles.inner}>
                     <Text style={styles.title}>회비 계좌</Text>
                     <View style={styles.metaWrapper}>
                         <View style={styles.metaItem}>
-                            <Text style={styles.metaLabel}>농협</Text>
-                            <Text style={styles.metaValue}>356-0022-3397-93</Text>
+                            <Text style={styles.metaLabel}>{bank}</Text>
+                            <Text style={styles.metaValue}>{accountNum}</Text>
                         </View>
                     </View>
                 </View>
             </>
         </TouchableHighlight>
+        
     );
 }
 

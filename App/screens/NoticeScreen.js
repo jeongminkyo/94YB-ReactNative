@@ -88,8 +88,8 @@ const NoticeScreen = () => {
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0}
                 onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
-                initialNumToRender={5}
-                maxToRenderPerBatch={10}
+                initialNumToRender={20}
+                maxToRenderPerBatch={20}
                 windowSize={10}
             />
             <GoToTopButton />
