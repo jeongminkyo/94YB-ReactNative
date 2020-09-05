@@ -84,13 +84,12 @@ const NoticeScreen = () => {
                   }
                 data={posts}
                 renderItem={renderItem}
-                initialNumToRender={7}
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0}
                 onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
-                initialNumToRender={20}
-                maxToRenderPerBatch={20}
-                windowSize={10}
+                initialNumToRender={2}
+                maxToRenderPerBatch={3}
+                windowSize={5}
             />
             <GoToTopButton />
         </View>

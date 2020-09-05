@@ -85,13 +85,12 @@ const TravelScreen = () => {
                   }
                 data={posts}
                 renderItem={renderItem}
-                initialNumToRender={7}
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0}
                 onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
-                initialNumToRender={5}
-                maxToRenderPerBatch={10}
-                windowSize={10}
+                initialNumToRender={2}
+                maxToRenderPerBatch={3}
+                windowSize={5}
             />
             <GoToTopButton />
         </View>
