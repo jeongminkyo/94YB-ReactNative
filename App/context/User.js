@@ -5,7 +5,6 @@ import { GoogleSignin, statusCodes } from '@react-native-community/google-signin
 const UserContext = createContext({
     isLoading: false,
     userInfo: undefined,
-    login: (email, password) => {},
     getUserInfo: () => {},
     googleLogin: () => {}
   });
@@ -13,22 +12,20 @@ const UserContext = createContext({
 const UserContextProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState(undefined);
     const [isLoading, setIsLoading] = useState(false);
-    
-    const login = (email, password) => {
-      AsyncStorage.setItem('token', 'save your token').then(() => {
-        setUserInfo({
-          name: 'dev-yakuza',
-          email: 'dev.yakuza@gamil.com',
-        });
-        setIsLoading(true);
-      });
-    };
 
     const googleLogin = async () => {
       try {
         await GoogleSignin.hasPlayServices();
         const userInfo = await GoogleSignin.signIn();
         console.log(userInfo)
+
+        AsyncStorage.setItem('token', 'save your token').then(() => {
+            setUserInfo({
+              name: 'dev-yakuza',
+              email: 'dev.yakuza@gamil.com',
+            });
+            setIsLoading(true);
+          });
       } catch (error) {
         if (error.code === statusCodes.SIGN_IN_CANCELLED) {
           // user cancelled the login flow
@@ -75,7 +72,6 @@ const UserContextProvider = ({ children }) => {
           value={{
             isLoading,
             userInfo,
-            login,
             getUserInfo,
             googleLogin
           }}>

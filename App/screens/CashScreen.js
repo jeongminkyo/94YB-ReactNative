@@ -8,10 +8,10 @@ import {
     FlatList
 } from 'react-native';
 
-import TopPicture from '../components/TopPicture';
-import GoToTopButton from '../components/GoToTopButton';
-import Items from '../data/pictures';
-import Cash from '../components/Cash';
+import TopPicture from 'components/TopPicture';
+import GoToTopButton from 'components/GoToTopButton';
+import Items from 'data/pictures';
+import Cash from 'components/Cash';
   
 const CashScreen = () => {
     const [refreshing, setRefreshing] = useState(false);
@@ -50,12 +50,9 @@ const CashScreen = () => {
     }
 
     const onEndReached = () => {
-        if (!onEndReachedCalledDuringMomentum) {
-            if (page < totalPage) {
-                setPages(page + 1)
-            }
-            onEndReachedCalledDuringMomentum = true;
-          }
+        if (page < totalPage) {
+            setPages(page + 1)
+        }
     }
 
     const showError = (message) => {
@@ -111,7 +108,6 @@ const CashScreen = () => {
                 renderItem={renderItem}
                 onEndReached={onEndReached}
                 onEndReachedThreshold={0.3}
-                onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
                 initialNumToRender={5}
                 maxToRenderPerBatch={5}
                 windowSize={5}

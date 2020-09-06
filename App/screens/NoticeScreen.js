@@ -7,10 +7,10 @@ import {
     FlatList
 } from 'react-native';
 
-import Post from '../components/Post';
-import GoToTopButton from '../components/GoToTopButton';
-import TopPicture from '../components/TopPicture';
-import Items from '../data/pictures';
+import Post from 'components/Post';
+import GoToTopButton from 'components/GoToTopButton';
+import TopPicture from 'components/TopPicture';
+import Items from 'data/pictures';
 
 import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 

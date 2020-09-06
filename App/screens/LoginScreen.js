@@ -7,17 +7,16 @@ import {
     Image
 } from 'react-native';
 
-import { UserContext } from '../Context/User';
+import { UserContext } from 'Context/User';
 
 import SplashScreen from 'react-native-splash-screen';
-import TopPicture from '../components/TopPicture';
-import Items from '../data/pictures';
-import Input from '../components/Input';
-import Button from '../components/Button';
+import TopPicture from 'components/TopPicture';
+import Items from 'data/pictures';
+import Button from 'components/Button';
 
 const LoginScreen = ({ navigation }) => {
 
-    const { login, googleLogin } = useContext(UserContext);
+    const { googleLogin } = useContext(UserContext);
 
     useEffect(() => {
         SplashScreen.hide();
@@ -34,19 +33,6 @@ const LoginScreen = ({ navigation }) => {
                 <Image
                 style={styles.image}
                 source={require('../images/title.png')}/>
-                    <Input style={{ marginBottom: 16 }} placeholder="Email" />
-                    <Input
-                    style={{ marginBottom: 16 }}
-                    placeholder="Password"
-                    secureTextEntry={true}
-                    />
-                    <Button
-                    style={{ marginBottom: 24, backgroundColor: '#333333' }}
-                    label="로그인"
-                    onPress={() => {
-                        login('dev.yakuza@gmail.com', 'password');
-                    }}
-                    />
                     <Button
                     style={{ backgroundColor: '#4285F4', borderColor: '#4285F4' }}
                     label_style={{ color: "#FFFFFF" }}

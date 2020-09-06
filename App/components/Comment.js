@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
-import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 
 const Comment = ({ comment }) => {
     return (

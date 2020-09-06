@@ -14,7 +14,6 @@ const Account = ({ bank, accountNum }) => {
     
     const copyClipBoard = () => {
         Clipboard.setString(accountNum);
-        console.log('touch!')
         let msg = '계좌번호가 복사되었습니다.'
 
         if (Platform.OS === 'android') {
@@ -49,7 +48,7 @@ const Account = ({ bank, accountNum }) => {
 
 export default Account;
 
-styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         flexDirection: 'row',

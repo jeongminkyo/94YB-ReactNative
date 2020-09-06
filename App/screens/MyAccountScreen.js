@@ -8,11 +8,11 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import Account from '../components/Account';
-import Icon from '../components/Icon';
-import TopPicture from '../components/TopPicture';
-import Cash from '../components/Cash';
-import Items from '../data/pictures';
+import Account from 'components/Account';
+import Icon from 'components/Icon';
+import TopPicture from 'components/TopPicture';
+import Cash from 'components/Cash';
+import Items from 'data/pictures';
 
 const MyAccountScreen = ({ navigation }) => {
     const [refreshing, setRefreshing] = useState(false);

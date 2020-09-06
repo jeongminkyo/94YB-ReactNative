@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableHighlight } from 'react-native';
-import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 
-import Comment from './Comment';
+import Comment from 'components/Comment';
 
 const CommentList = ({ comments }) => {
     return (

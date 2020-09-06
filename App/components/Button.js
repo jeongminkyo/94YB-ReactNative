@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import Icon from '../components/Icon';
+import Icon from 'components/Icon';
 
 const Button = ({ label, label_style, style, onPress, icon }) => {
   let icon_image;

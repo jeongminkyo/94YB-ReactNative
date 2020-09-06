@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
-import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 
 const CommentWrite = () => {
     return (
