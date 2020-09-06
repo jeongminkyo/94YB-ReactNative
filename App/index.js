@@ -4,7 +4,7 @@ import 'react-native-gesture-handler';
 import Navigator from './navigators/Navigator';
 import FCMContainer from './components/FCMContainer';
 
-import { UserContextProvider } from './Context/User'
+import { UserContextProvider } from './context/User'
 
 const App = () => {
   return (

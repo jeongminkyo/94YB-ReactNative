@@ -7,7 +7,7 @@ import {
     Image
 } from 'react-native';
 
-import { UserContext } from 'Context/User';
+import { UserContext } from 'context/User';
 
 import SplashScreen from 'react-native-splash-screen';
 import TopPicture from 'components/TopPicture';

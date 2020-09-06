@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { UserContext } from '../Context/User';
+import { UserContext } from 'context/User';
 
-import Loading from '../components/Loading';
+import Loading from 'components/Loading';
 import BottomTabNavigator from './BottomTabNavigator';
 import LoginNavigator from './LoginNavigator';
 
