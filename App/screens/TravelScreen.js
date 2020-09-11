@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import {
     View,
     StyleSheet,
@@ -6,6 +6,8 @@ import {
     Alert,
     FlatList
 } from 'react-native';
+
+import { UserContext } from 'context/User';
 
 import Post from 'components/Post';
 import GoToTopButton from 'components/GoToTopButton';
@@ -22,6 +24,8 @@ const TravelScreen = () => {
     const [page, setPages] = useState(1);
     const [totalPage, setTotalPages] = useState(1);
 
+    const { userInfo } = useContext(UserContext);
+
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         setPages(1);
@@ -30,7 +34,8 @@ const TravelScreen = () => {
 
     const getPostInfo = async (page) => {
         try {
-            const res = await fetch(`https://yb94.name/api/v1/travel_posts?page=${page}`);
+            const accessToken = userInfo["accessToken"]
+            const res = await fetch(`https://yb94.name/api/v1/travel_posts?page=${page}&accessToken=${accessToken}`);
             const json = await res.json();
             if (page === 1) {
                 setPosts([...json.travel_posts])

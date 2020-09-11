@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import {
     View,
     StyleSheet,
@@ -7,6 +7,8 @@ import {
     Alert,
     FlatList
 } from 'react-native';
+
+import { UserContext } from 'context/User';
 
 import TopPicture from 'components/TopPicture';
 import GoToTopButton from 'components/GoToTopButton';
@@ -23,6 +25,8 @@ const CashScreen = () => {
         TotalCashUpdateAt: ''
     });
 
+    const { userInfo } = useContext(UserContext);
+
     const onRefresh = useCallback(() => {
         setRefreshing(true);
         setPages(1)
@@ -31,7 +35,8 @@ const CashScreen = () => {
 
     const getCashInfo = async (page) => {
         try {
-            const res = await fetch(`https://yb94.name/api/v1/cashes?page=${page}`);
+            const accessToken = userInfo["accessToken"]
+            const res = await fetch(`https://yb94.name/api/v1/cashes?page=${page}&accessToken=${accessToken}`);
             const json = await res.json();
             if (page === 1) {
                 setCashes([...json.cashes]);   

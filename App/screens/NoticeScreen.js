@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import {
     View,
     StyleSheet,
@@ -6,6 +6,8 @@ import {
     Alert,
     FlatList
 } from 'react-native';
+
+import { UserContext } from 'context/User';
 
 import Post from 'components/Post';
 import GoToTopButton from 'components/GoToTopButton';
@@ -21,6 +23,8 @@ const NoticeScreen = () => {
     const [page, setPages] = useState(1);
     const [totalPage, setTotalPages] = useState(1);
 
+    const { userInfo } = useContext(UserContext);
+
     const onRefresh = useCallback(() => {
         setRefreshing(true);
         setPages(1);
@@ -29,8 +33,10 @@ const NoticeScreen = () => {
 
     const getPostInfo = async (page) => {
         try {
-            const res = await fetch(`https://yb94.name/api/v1/notices?page=${page}`);
+            const accessToken = userInfo["accessToken"]
+            const res = await fetch(`https://yb94.name/api/v1/notices?page=${page}&accessToken=${accessToken}`);
             const json = await res.json();
+            console.log(json)
             if (page === 1) {
                 setPosts([...json.notices])
             } else {
@@ -39,6 +45,7 @@ const NoticeScreen = () => {
             setTotalPages(json.total_page)
         }
         catch (error) {
+            console.log(error)
             showError('알 수 없는 에러가 발생했습니다.');
         }
     }

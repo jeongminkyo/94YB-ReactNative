@@ -1,12 +1,15 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import {
     View,
     Text,
     StyleSheet,
     ScrollView,
     RefreshControl,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from 'react-native';
+
+import { UserContext } from 'context/User';
 
 import Account from 'components/Account';
 import Icon from 'components/Icon';
@@ -22,6 +25,8 @@ const MyAccountScreen = ({ navigation }) => {
     const [bank, setBank] = useState('');
     const [accountNum, setAccountNum] = useState('');
 
+    const { userInfo } = useContext(UserContext);
+
     const onRefresh = useCallback(() => {
         setRefreshing(true);
         setPages(1)
@@ -30,7 +35,8 @@ const MyAccountScreen = ({ navigation }) => {
 
     const getCashInfo = async (page) => {
         try {
-            const res = await fetch(`https://yb94.name/api/v1/14/cashes?page=${page}`);
+            const accessToken = userInfo["accessToken"]
+            const res = await fetch(`https://yb94.name/api/v1/user_cashes?page=${page}&accessToken=${accessToken}`);
             const json = await res.json();
             if (page === 1) {
                 setCashes([...json.cashes]);   
